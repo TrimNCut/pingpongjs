@@ -1,0 +1,19 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+    margin-top: 3vw;
+    font-size: 3vw;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: cornflowerblue;
+}
+
+canvas{
+    border: 1px solid black;
+    margin-left: 37.5vw;
+    margin-top: 3vw;
+    border-radius: 1vw;
+} 
