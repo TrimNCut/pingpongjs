@@ -3,8 +3,11 @@ let ctx = canvas.getContext("2d");
 
 let ballX = 30;
 let ballY = 30;
+let dir = 1;
+let velx = (Math.round((10 * Math.random())) % 5)+1;
+let vely = (Math.round((10 * Math.random())) % 5)+1;
 
-let paddleY = 460;
+let paddleY = 490;
 let paddleX = 190;
 
 function drawPaddle(){
@@ -20,13 +23,27 @@ function drawBall(){
     ctx.fill();
 }
 
+function collision(){
+    if ((ballX > paddleX+120) && (ballY > paddleY+12) && ballX < paddleX && ballY < paddleY){
+        return false;
+    }
+    else if ((ballX >= paddleX && ballY >= paddleY)){
+        return true;
+    }   
+}
+
 setInterval( () => {
 
-    ballX += 5;
-    ballY += 5;
+    ballX += dir * velx;
+    ballY += dir * vely;
 
-    ctx.fillStyle = "rgb(255,255,255)";
-    ctx.fill();
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+
+    if (collision()){
+        dir = -1;
+        velx = Math.round((10 * Math.random()));
+        vely = Math.round((10 * Math.random()));
+    }
 
     drawBall();
 
