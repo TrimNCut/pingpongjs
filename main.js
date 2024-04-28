@@ -4,8 +4,8 @@ let ctx = canvas.getContext("2d");
 let ballX = 30;
 let ballY = 30;
 let dir = 1;
-let velx = (Math.round((10 * Math.random())) % 5)+1;
-let vely = (Math.round((10 * Math.random())) % 5)+1;
+let velx = (Math.round((10 * Math.random())) % 4)+3;
+let vely = (Math.round((10 * Math.random())) % 4)+3;
 
 let paddleY = 490;
 let paddleX = 190;
@@ -32,6 +32,12 @@ function collision(){
     }   
 }
 
+function wallcollision(){
+    if ((ballX >= 495) || (ballY <= 10) || (ballX <= 5)){
+        return true;
+    }       
+}
+
 setInterval( () => {
 
     ballX += dir * velx;
@@ -41,8 +47,13 @@ setInterval( () => {
 
     if (collision()){
         dir = -1;
-        velx = Math.round((10 * Math.random()));
-        vely = Math.round((10 * Math.random()));
+        velx = (Math.round((10 * Math.random())) % 4)+3;
+        vely = (Math.round((10 * Math.random())) % 4)+3;
+    }
+    if (wallcollision()){
+        dir *= -1;
+        velx = (Math.round((10 * Math.random())) % 4)+3;
+        vely = (Math.round((10 * Math.random())) % 4)+3;
     }
 
     drawBall();
