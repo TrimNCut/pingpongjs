@@ -31,7 +31,7 @@ function collision(){
     if ((ballX > paddleX+120) && (ballY > paddleY+12) && ballX < paddleX && ballY < paddleY){
         return false;
     }
-    else if ((ballX >= paddleX && ballY >= paddleY)){
+    else if ((ballX >= paddleX && ballY >= paddleY && ballX <= paddleX+120)){
         return true;
     }   
 }
