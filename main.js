@@ -10,6 +10,10 @@ let vely = (Math.round((10 * Math.random())) % 4)+3;
 let paddleY = 490;
 let paddleX = 190;
 
+let head = document.querySelector("h1");
+
+let score = 0;
+
 function drawPaddle(){
     ctx.fillStyle = "black";
     ctx.rect(paddleX, paddleY, 120, 12);
@@ -49,6 +53,7 @@ setInterval( () => {
         dir = -1;
         velx = (Math.round((10 * Math.random())) % 4)+3;
         vely = (Math.round((10 * Math.random())) % 4)+3;
+        score += 1;
     }
     if (wallcollision()){
         dir *= -1;
@@ -69,5 +74,7 @@ setInterval( () => {
             paddleX = (e.clientX - canvas.width) - 280;
         }
     });
+
+    head.innerHTML = "Ping Pong - "+score;
 
 }, 1000/60);
